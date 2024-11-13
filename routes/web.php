@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\External\IgController;
+use App\Http\Controllers\External\GoogleAuthController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -19,11 +20,16 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('__invoke',[IgController::class,'__invoke']);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/home', function() {
+    return Inertia::render('Home');
+})->name('home');
+Route::get('/auth/google/redirect',[GoogleAuthController::class, 'redirect']);
+Route::get('/auth/google/callback',[GoogleAuthController::class, 'callback']);
 
 require __DIR__.'/auth.php';

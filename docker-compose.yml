@@ -61,6 +61,15 @@ services:
             PMA_PASSWORD: "${DB_PASSWORD}"
         networks:
             - sail
+    https-portal:
+        image: steveltn/https-portal:1
+        ports:
+            - "8443:443"
+        environment:
+            STAGE: local
+            DOMAINS: "localhost -> http://host.docker.internal:80"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
 networks:
     sail:
         driver: bridge
