@@ -40,4 +40,9 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_REDIRECT'),
     ],
+
+    'make' => [
+        'base_url' => env('MAKE_API_BASE_URL'),
+        'api_token' => env('MAKE_API_TOKEN'),
+    ],
 ];
