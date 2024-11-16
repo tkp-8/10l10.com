@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\External\GoogleAuthController;
+use App\Http\Controllers\External\MakeApiController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/home', function() {
     return Inertia::render('Home');
 })->name('home');
+Route::get('/make', [MakeApiController::class, 'listDataStores']);
 Route::get('/auth/google/redirect',[GoogleAuthController::class, 'redirect']);
 Route::get('/auth/google/callback',[GoogleAuthController::class, 'callback']);
 
