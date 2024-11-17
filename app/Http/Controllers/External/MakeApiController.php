@@ -5,6 +5,7 @@ namespace App\Http\Controllers\External;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\MakeApiService;
+use Laravel\Socialite\Facades\Socialite;
 
 class MakeApiController extends Controller
 {
@@ -15,7 +16,12 @@ class MakeApiController extends Controller
         $this->makeApiService = $makeApiService;
     }
 
+    public function callback()
+    {
+    }
     public function listDataStores(){
+
+        dd(Socialite::driver("google")->stateless()->user()->token);
         $teamId = 918081;
         $dataStores = $this->makeApiService->getDataStores($teamId);
 
