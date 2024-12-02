@@ -27,11 +27,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/home', function() {
+Route::get('/home', function () {
     return Inertia::render('Home');
 })->name('home');
-Route::get('/make', [MakeApiController::class, 'listDataStores']);
-Route::get('/auth/google/redirect',[GoogleAuthController::class, 'redirect']);
-Route::get('/auth/google/callback',[GoogleAuthController::class, 'callback']);
+Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect']);
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback']);
 
 require __DIR__.'/auth.php';

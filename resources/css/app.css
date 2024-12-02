@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-black;
+    }
+
+    .notch {
+        clip-path: polygon(0 14%, 100% 0, 100% 100%, 0 86%);
+        position: absolute;
+        margin-top: auto;
+        margin-bottom: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 60px;
+        height: 350px;
+        background-color: black;
+    }
+}
+
+@layer components {
+    .btn-blue {
+        @apply bg-blue-500 rounded p-2 w-40 h-10;
+    }
+}
