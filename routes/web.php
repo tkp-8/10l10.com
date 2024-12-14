@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/home', function () {
     return Inertia::render('Home');
 })->name('home');
+Route::get('/landing', function () {
+    return Inertia::render('LandingPage');
+})->name('landing');
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect']);
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback']);
 

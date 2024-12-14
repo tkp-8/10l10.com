@@ -14,6 +14,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+        "cutive-mono": ["Cutive-Mono"],
       },
       backgroundImage: {
         "grain-blue": "url(/public/assets/img/grain-blue.svg)",
